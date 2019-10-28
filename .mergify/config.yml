@@ -1,0 +1,4 @@
+pull_request_rules:
+    - name: do nothing
+      conditions: []
+      actions: []
