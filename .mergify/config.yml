@@ -1,7 +1,4 @@
 pull_request_rules:
-    - name: do nothing
-      conditions: []
-      actions: []
     - name: label on conflict
       conditions:
          - conflict
