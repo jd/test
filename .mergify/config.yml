@@ -20,7 +20,7 @@ pull_request_rules:
 
     - name: freeze for 5 min on morning
       conditions:
-        - schedule!=10:00-10:05
+        - schedule!=10:00-10:10
       actions:
         post_check:
           title: |
