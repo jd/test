@@ -18,7 +18,7 @@ pull_request_rules:
           remove:
             - conflict
 
-    - name: freeze for 5 min on morning
+    - name: Freeze schedule
       conditions:
         - schedule!=10:00-10:10
       actions:
