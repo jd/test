@@ -20,16 +20,12 @@ pull_request_rules:
 
     - name: freeze for 5 min on morning
       conditions:
-        - schedule=09:45-09:50
+        - schedule!=10:00-10:05
       actions:
         post_check:
           title: |
             {% if check_succeed %}
-            Merge are forbidden
+            Merge is allowed
             {% else %}
-            Merge allowed
-            {% endif %}
-          summary: |
-            {% if check_succeed %}
-            Merges are forbidden at this time.
+            Merge is forbidden 
             {% endif %}
