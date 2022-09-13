@@ -17,3 +17,19 @@ pull_request_rules:
         label:
           remove:
             - conflict
+
+    - name: freeze for 5 min on morning
+      conditions:
+        - schedule=09:45-09:50
+      actions:
+        post_check:
+          title: |
+            {% if check_succeed %}
+            Merge are forbidden
+            {% else %}
+            Merge allowed
+            {% endif %}
+          summary: |
+            {% if check_succeed %}
+            Merges are forbidden at this time.
+            {% endif %}
