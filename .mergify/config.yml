@@ -21,3 +21,9 @@ pull_request_rules:
             {% else %}
             Merge is forbidden 
             {% endif %}
+
+
+queue_rules:
+  - name: default
+    conditions:
+      - label=mergeme
