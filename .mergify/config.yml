@@ -12,7 +12,7 @@ pull_request_rules:
 
     - name: Freeze schedule
       conditions:
-        - schedule!=10:00-10:15[Europe/Paris]
+        - schedule=10:00-10:15[Europe/Paris]
       actions:
         post_check:
           title: |
