@@ -17,5 +17,5 @@ pull_request_rules:
 
 queue_rules:
   - name: default
-    conditions:
+    routing_conditions:
       - label=mergeme
