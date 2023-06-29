@@ -19,6 +19,8 @@ queue_rules:
   - name: default
     routing_conditions:
       - label=mergeme
+    merge_conditions:
+      - check-success = myci
 
   - name: specialq
     routing_conditions:
