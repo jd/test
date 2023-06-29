@@ -10,11 +10,6 @@ pull_request_rules:
         comment:
           message: Could you please fix the conflicts @{{author}}? 🙏
 
-    - name: Merge
-      conditions: []
-      actions:
-        merge:
-
 queue_rules:
   - name: default
     routing_conditions:
