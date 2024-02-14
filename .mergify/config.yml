@@ -18,6 +18,17 @@ pull_request_rules:
             - label=success
           neutral_conditions: []
           title: Success!
+          
+    - name: test backport
+      conditions:
+        - label = backport
+      actions:
+        backport:
+          body: |
+            {{ body }}
+            {% for c in commits %}
+            (cherry picked from commit {{ c.sha }})
+            {% endfor %}
 
 queue_rules:
   - name: default
