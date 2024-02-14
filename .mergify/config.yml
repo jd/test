@@ -14,6 +14,28 @@ pull_request_rules:
          - -conflict
          - -closed
       actions:
+<<<<<<< HEAD
         label:
           remove:
             - conflict
+=======
+        backport:
+          body: |
+            {{ body }}
+            {% for c in commits %}
+            (cherry picked from commit {{ c.sha }})
+            {% endfor %}
+          branches:
+            - tt
+
+queue_rules:
+  - name: default
+    routing_conditions:
+      - label=mergeme
+    merge_conditions:
+      - check-success = myci
+
+  - name: specialq
+    routing_conditions:
+      - label=special
+>>>>>>> fe39057 (Update config.yml (#28))
