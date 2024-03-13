@@ -1,44 +1,51 @@
 pull_request_rules:
-    - name: label on conflict
-      conditions:
-         - conflict
-         - -closed
-      actions:
-        label:
-          add:
-            - conflict
-        comment:
-          message: Could you please fix the conflicts @{{author}}? 🙏
-
-    - name: test post check neutral
-      conditions: []
-      actions:
-        post_check:
-          success_conditions:
-            - label=success
-          neutral_conditions: []
-          title: Success!
-          
-    - name: test backport
-      conditions:
-        - label = backport
-      actions:
-        backport:
-          body: |
-            {{ body }}
-            {% for c in commits %}
-            (cherry picked from commit {{ c.sha }})
-            {% endfor %}
-          branches:
-            - tt
-
+  - name: Assign t-shirt size to PR
+    description: >-
+      Assign a t-shirt size label to a pull request based on the number of lines
+      changed.
+    conditions:
+      - '#modified-lines >= 100'
+      - '#modified-lines < 500'
+    actions:
+      label:
+        toggle:
+          - size/L
+  - name: label on conflict
+    conditions:
+      - conflict
+      - '-closed'
+    actions:
+      label:
+        add:
+          - conflict
+      comment:
+        message: Could you please fix the conflicts @{{author}}? 🙏
+  - name: test post check neutral
+    conditions: []
+    actions:
+      post_check:
+        success_conditions:
+          - label=success
+        neutral_conditions: []
+        title: Success!
+  - name: test backport
+    conditions:
+      - label = backport
+    actions:
+      backport:
+        body: |
+          {{ body }}
+          {% for c in commits %}
+          (cherry picked from commit {{ c.sha }})
+          {% endfor %}
+        branches:
+          - tt
 queue_rules:
   - name: default
     routing_conditions:
       - label=mergeme
     merge_conditions:
       - check-success = myci
-
   - name: specialq
     routing_conditions:
       - label=special
