@@ -20,6 +20,13 @@ pull_request_rules:
           - conflict
       comment:
         message: Could you please fix the conflicts @{{author}}? 🙏
+
+  - name: comment hello
+    conditions: []
+    actions:
+      comment:
+        message: hello
+        
   - name: test post check neutral
     conditions: []
     actions:
